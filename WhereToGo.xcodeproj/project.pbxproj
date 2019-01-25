@@ -32,6 +32,12 @@
 		E03985B921FB616000531EA9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03985B821FB616000531EA9 /* Comment.swift */; };
 		E03985BA21FB616000531EA9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03985B821FB616000531EA9 /* Comment.swift */; };
 		E03985BB21FB616000531EA9 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03985B821FB616000531EA9 /* Comment.swift */; };
+		E0858FAE21FB665000868F9C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FAD21FB665000868F9C /* Extension.swift */; };
+		E0858FAF21FB665000868F9C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FAD21FB665000868F9C /* Extension.swift */; };
+		E0858FB021FB665000868F9C /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FAD21FB665000868F9C /* Extension.swift */; };
+		E0858FB421FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
+		E0858FB521FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
+		E0858FB621FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,8 @@
 		E03985B021FB5E0C00531EA9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E03985B421FB60E100531EA9 /* Scene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene.swift; sourceTree = "<group>"; };
 		E03985B821FB616000531EA9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		E0858FAD21FB665000868F9C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		E0858FB321FB68EC00868F9C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +132,7 @@
 				E039856F21FB543700531EA9 /* AppDelegate.swift */,
 				E039857321FB543700531EA9 /* Main.storyboard */,
 				E03985A121FB583A00531EA9 /* Extension */,
+				E0858FB121FB668D00868F9C /* VIewController */,
 				E03985AF21FB5DE100531EA9 /* Model */,
 				E03985A221FB58B700531EA9 /* DataBase */,
 				E039857921FB543800531EA9 /* Assets.xcassets */,
@@ -155,6 +164,8 @@
 		E03985A121FB583A00531EA9 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				E0858FAD21FB665000868F9C /* Extension.swift */,
+				E0858FB321FB68EC00868F9C /* ImagePicker.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -177,6 +188,21 @@
 				E03985B821FB616000531EA9 /* Comment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E0858FB121FB668D00868F9C /* VIewController */ = {
+			isa = PBXGroup;
+			children = (
+				E0858FB221FB669F00868F9C /* TestView */,
+			);
+			path = VIewController;
+			sourceTree = "<group>";
+		};
+		E0858FB221FB669F00868F9C /* TestView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,12 +336,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0858FAE21FB665000868F9C /* Extension.swift in Sources */,
 				E03985AC21FB5BF800531EA9 /* DBScene.swift in Sources */,
 				E03985A821FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B121FB5E0C00531EA9 /* User.swift in Sources */,
 				E03985B921FB616000531EA9 /* Comment.swift in Sources */,
 				E039857821FB543700531EA9 /* WhereToGo.xcdatamodeld in Sources */,
 				E03985B521FB60E100531EA9 /* Scene.swift in Sources */,
+				E0858FB421FB68EC00868F9C /* ImagePicker.swift in Sources */,
 				E03985A421FB592500531EA9 /* DataBase.swift in Sources */,
 				E039857021FB543700531EA9 /* AppDelegate.swift in Sources */,
 			);
@@ -328,10 +356,12 @@
 				E03985AD21FB5BF800531EA9 /* DBScene.swift in Sources */,
 				E03985A921FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B621FB60E100531EA9 /* Scene.swift in Sources */,
+				E0858FB521FB68EC00868F9C /* ImagePicker.swift in Sources */,
 				E03985BA21FB616000531EA9 /* Comment.swift in Sources */,
 				E03985A521FB592500531EA9 /* DataBase.swift in Sources */,
 				E03985B221FB5E0C00531EA9 /* User.swift in Sources */,
 				E039858821FB543800531EA9 /* WhereToGoTests.swift in Sources */,
+				E0858FAF21FB665000868F9C /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,10 +372,12 @@
 				E03985AE21FB5BF800531EA9 /* DBScene.swift in Sources */,
 				E03985AA21FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B721FB60E100531EA9 /* Scene.swift in Sources */,
+				E0858FB621FB68EC00868F9C /* ImagePicker.swift in Sources */,
 				E03985BB21FB616000531EA9 /* Comment.swift in Sources */,
 				E03985A621FB592500531EA9 /* DataBase.swift in Sources */,
 				E03985B321FB5E0C00531EA9 /* User.swift in Sources */,
 				E039859321FB543800531EA9 /* WhereToGoUITests.swift in Sources */,
+				E0858FB021FB665000868F9C /* Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
