@@ -1,5 +1,5 @@
 //
-//  SingUpVC.swift
+//  MyselfVC.swift
 //  WhereToGo
 //
 //  Created by 徐夷琦 on 2019/1/26.
@@ -8,44 +8,33 @@
 
 import UIKit
 
-class SingUpVC: UIViewController {
-    
-    @IBOutlet weak var finishEdit: UIBarButtonItem!
-    
-    @IBOutlet weak var cancel: UIBarButtonItem!
-    
-    @IBOutlet weak var avaImage: UIImageView!
-    
-    @IBOutlet weak var avaShadow: UIImageView!
-    
-    
 
+
+/// 我的页面VC
+class MyselfVC: UIViewController {
+
+    @IBOutlet weak var SignOut: UIButton!
+    
+    
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        avaImage.layer.cornerRadius = avaImage.frame.width/2
-        avaShadow.layer.cornerRadius = avaShadow.frame.width/2
 
         // Do any additional setup after loading the view.
     }
     
-    
-    @IBAction func finishClk(_ sender: Any) {
+    @IBAction func signOutClk(_ sender: Any) {
         
-        
-    }
-    
-    
-    
-
-    @IBAction func cancel(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: nil)
+        _ = User.signOut()
         
     }
     
     
+    @IBAction func printAllUser(_ sender: Any) {
+        
+        DataBase.showAlluserName()
+        
+    }
     
     
     /*

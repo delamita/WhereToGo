@@ -13,6 +13,7 @@ import CoreData
 
 class DataBase: NSObject {
     
+    
     class func appDelegateObjcet() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }

@@ -32,12 +32,41 @@ class SignInVC: UIViewController {
         self.userNameText.layer.borderWidth = 2
         self.passwordText.layer.borderWidth = 2       
         self.SignInBt.layer.borderWidth = 2
+    
 
         // Do any additional setup after loading the view.
     }
     
     
+    
+    /// 登陆
+    ///
+    /// - Parameter sender:
     @IBAction func SignInBtClk(_ sender: Any) {
+        
+        if userNameText.text != nil && passwordText.text != nil {
+            
+            let user = User.getUser(withPhoneNumber: userNameText.text!)
+            if user != nil{
+                
+                if user!.password == passwordText.text {
+                    if user!.singIn() {
+                        // 登录成功
+                    }
+                }
+                else{
+                    showMessagbox(viewController: self, message: "密码不正确")
+                }
+                
+            }
+            else{
+                showMessagbox(viewController: self, message: "未找到用户")
+            }
+            
+        }
+        
+        
+        
         
     }
     

@@ -87,9 +87,9 @@ extension DataBase{
     ///
     /// - Parameter withPhoneNumber: 查询的手机号
     /// - Returns: 查询到的User类用户
-    class func getUser(withPhoneNumber: String) -> User {
+    class func getUser(withPhoneNumber: String) -> User? {
         
-        let user = User()
+        var user : User?
         
         //  获取上下文
         let managedObectContext = self.appDelegateObjcet().persistentContainer.viewContext
@@ -97,25 +97,31 @@ extension DataBase{
         //  建立一个获取的请求
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "DBUser")
         
-        
-        
         //  进行查询
         do {
             let fetchedResults = try managedObectContext.fetch(fetchRequest) as? [NSManagedObject]
             
             if let result = fetchedResults {
                 
+                
+
                 for i in 0..<result.count{
+                    
                     if result[i].value(forKey: "phoneNumber") as! String == withPhoneNumber {
                         
-                        user.userName = result[i].value(forKey: "userName") as? String
-                        user.password = result[i].value(forKey: "password") as? String
-                        user.phoneNumber = result[i].value(forKey: "phoneNumber") as? String
-                        user.avaImage = result[i].value(forKey: "avaImage") as? UIImage
+                        user = User()
+                        
+                        user!.userName = result[i].value(forKey: "userName") as? String
+                        user!.password = result[i].value(forKey: "password") as? String
+                        user!.phoneNumber = result[i].value(forKey: "phoneNumber") as? String
+                        user!.avaImage = result[i].value(forKey: "avaImage") as? UIImage
                         
                         break
                     }
+                    
                 }
+                
+                return user
                 
             }
             
@@ -123,9 +129,7 @@ extension DataBase{
             print("未找到用户")
         }
         
-        
-        
-        return user
+        return nil
     }
     
     

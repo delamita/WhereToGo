@@ -13,10 +13,23 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        // 登陆默认账号，登陆失败则跳转到登陆界面
+        if User.defaultSignIn() == false {
+            
+            let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+            let nvc = storyBoard.instantiateViewController(withIdentifier: "SignInVC") as! SignInVC
+            self.window?.rootViewController = nvc
+            
+        }
+
+        
+        
+        
         return true
     }
 
@@ -85,9 +98,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                
             }
         }
     }
+    
+
+    
+    
 
 }
+
+
 
