@@ -38,6 +38,12 @@
 		E0858FB421FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
 		E0858FB521FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
 		E0858FB621FB68EC00868F9C /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB321FB68EC00868F9C /* ImagePicker.swift */; };
+		E0858FBA21FB716E00868F9C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB921FB716E00868F9C /* SignInVC.swift */; };
+		E0858FBB21FB716E00868F9C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB921FB716E00868F9C /* SignInVC.swift */; };
+		E0858FBC21FB716E00868F9C /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FB921FB716E00868F9C /* SignInVC.swift */; };
+		E0858FBE21FC908A00868F9C /* SingUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FBD21FC908A00868F9C /* SingUpVC.swift */; };
+		E0858FBF21FC908A00868F9C /* SingUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FBD21FC908A00868F9C /* SingUpVC.swift */; };
+		E0858FC021FC908B00868F9C /* SingUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0858FBD21FC908A00868F9C /* SingUpVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +85,8 @@
 		E03985B821FB616000531EA9 /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		E0858FAD21FB665000868F9C /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		E0858FB321FB68EC00868F9C /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E0858FB921FB716E00868F9C /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
+		E0858FBD21FC908A00868F9C /* SingUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,8 +145,8 @@
 				E03985A221FB58B700531EA9 /* DataBase */,
 				E039857921FB543800531EA9 /* Assets.xcassets */,
 				E039857B21FB543800531EA9 /* LaunchScreen.storyboard */,
-				E039857E21FB543800531EA9 /* Info.plist */,
 				E039857621FB543700531EA9 /* WhereToGo.xcdatamodeld */,
+				E039857E21FB543800531EA9 /* Info.plist */,
 			);
 			path = WhereToGo;
 			sourceTree = "<group>";
@@ -193,6 +201,8 @@
 		E0858FB121FB668D00868F9C /* VIewController */ = {
 			isa = PBXGroup;
 			children = (
+				E0858FB821FB711A00868F9C /* SingIn */,
+				E0858FB721FB70FE00868F9C /* HomePage */,
 				E0858FB221FB669F00868F9C /* TestView */,
 			);
 			path = VIewController;
@@ -203,6 +213,22 @@
 			children = (
 			);
 			path = TestView;
+			sourceTree = "<group>";
+		};
+		E0858FB721FB70FE00868F9C /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		E0858FB821FB711A00868F9C /* SingIn */ = {
+			isa = PBXGroup;
+			children = (
+				E0858FB921FB716E00868F9C /* SignInVC.swift */,
+				E0858FBD21FC908A00868F9C /* SingUpVC.swift */,
+			);
+			path = SingIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -340,6 +366,8 @@
 				E03985AC21FB5BF800531EA9 /* DBScene.swift in Sources */,
 				E03985A821FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B121FB5E0C00531EA9 /* User.swift in Sources */,
+				E0858FBE21FC908A00868F9C /* SingUpVC.swift in Sources */,
+				E0858FBA21FB716E00868F9C /* SignInVC.swift in Sources */,
 				E03985B921FB616000531EA9 /* Comment.swift in Sources */,
 				E039857821FB543700531EA9 /* WhereToGo.xcdatamodeld in Sources */,
 				E03985B521FB60E100531EA9 /* Scene.swift in Sources */,
@@ -357,9 +385,11 @@
 				E03985A921FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B621FB60E100531EA9 /* Scene.swift in Sources */,
 				E0858FB521FB68EC00868F9C /* ImagePicker.swift in Sources */,
+				E0858FBB21FB716E00868F9C /* SignInVC.swift in Sources */,
 				E03985BA21FB616000531EA9 /* Comment.swift in Sources */,
 				E03985A521FB592500531EA9 /* DataBase.swift in Sources */,
 				E03985B221FB5E0C00531EA9 /* User.swift in Sources */,
+				E0858FBF21FC908A00868F9C /* SingUpVC.swift in Sources */,
 				E039858821FB543800531EA9 /* WhereToGoTests.swift in Sources */,
 				E0858FAF21FB665000868F9C /* Extension.swift in Sources */,
 			);
@@ -373,9 +403,11 @@
 				E03985AA21FB595C00531EA9 /* DBUser.swift in Sources */,
 				E03985B721FB60E100531EA9 /* Scene.swift in Sources */,
 				E0858FB621FB68EC00868F9C /* ImagePicker.swift in Sources */,
+				E0858FBC21FB716E00868F9C /* SignInVC.swift in Sources */,
 				E03985BB21FB616000531EA9 /* Comment.swift in Sources */,
 				E03985A621FB592500531EA9 /* DataBase.swift in Sources */,
 				E03985B321FB5E0C00531EA9 /* User.swift in Sources */,
+				E0858FC021FC908B00868F9C /* SingUpVC.swift in Sources */,
 				E039859321FB543800531EA9 /* WhereToGoUITests.swift in Sources */,
 				E0858FB021FB665000868F9C /* Extension.swift in Sources */,
 			);
