@@ -40,6 +40,7 @@ extension UIView{
     
 }
 
+
 extension Error{
     
     func print() {
@@ -129,3 +130,83 @@ func showMessagbox(viewController: UIViewController, message: String, title: Str
     viewController.present(alert, animated: true, completion: nil)
     
 }
+
+
+
+
+extension UIViewController {
+    class func current(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        if let nav = base as? UINavigationController {
+            return current(base: nav.visibleViewController)
+        }
+        if let tab = base as? UITabBarController {
+            return current(base: tab.selectedViewController)
+        }
+        if let presented = base?.presentedViewController {
+            return current(base: presented)
+        }
+        return base
+    }
+}
+
+
+
+
+struct SelectCell{
+    
+    var cell : ImagePickerCell
+    
+    var number :Int?{
+        get{
+            return cell.numbersOfSelected
+        }
+        set{
+            cell.numbersOfSelected = newValue
+            if newValue == nil {
+                
+                cell.numberBut.isHidden = true
+            }
+            else{
+                cell.numberBut.isHidden = false
+            }
+            
+        }
+    }
+    
+    var indexPath : IndexPath
+    
+    mutating func setNumber(newValue: Int?)  {
+        self.number = newValue
+    }
+    
+    
+    init(cell: ImagePickerCell) {
+        self.cell = cell
+        self.indexPath = cell.indexPath!
+    }
+    
+}
+
+
+
+
+func cutTags(tag: String) -> [String] {
+    
+    var tags = tag.components(separatedBy: "#")
+    tags.remove(at: 0)
+    print(tags)
+    
+    return tags
+}
+
+
+func verbTags(tags: [String]) -> String {
+    
+    var tag = ""
+    
+    for i in tags {
+        tag += "#"+i
+    }
+    return tag
+}
+    

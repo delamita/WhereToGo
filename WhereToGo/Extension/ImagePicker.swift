@@ -1,15 +1,20 @@
 //
 //  ImagePicker.swift
-//  WhereToGo
+//  Instagrame
 //
-//  Created by 徐夷琦 on 2019/1/25.
-//  Copyright © 2019 徐夷琦. All rights reserved.
+//  Created by 费克翔 on 2018/1/2.
+//  Copyright © 2018年 Crazzy. All rights reserved.
 //
 
 import UIKit
 import Photos
 
+
+
 class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITabBarControllerDelegate{
+    
+    
+    var inputVC : UIViewController?
     
     
     var assetsFetchResults:PHFetchResult<PHAsset>?
@@ -18,45 +23,12 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
     var isCellSellected = [Bool]()
     var selectedNumber = [Int]()
     
-    struct SelectCell{
-        
-        var cell : ImagePickerCell
-        
-        var number :Int?{
-            get{
-                return cell.numbersOfSelected
-            }
-            set{
-                cell.numbersOfSelected = newValue
-                if newValue == nil {
-                    
-                    cell.numberBut.isHidden = true
-                }
-                else{
-                    cell.numberBut.isHidden = false
-                }
-                
-            }
-        }
-        
-        var indexPath : IndexPath
-        
-        mutating func setNumber(newValue: Int?)  {
-            self.number = newValue
-        }
-        
-        
-        init(cell: ImagePickerCell) {
-            self.cell = cell
-            self.indexPath = cell.indexPath!
-        }
-        
-    }
+
     
     var selectedCells = [SelectCell]()
     
     var requistedImage: UIImage?
-    
+
     /// 最终返回的图片.仅在最后传图片时调用加载原图
     var selectedImages = [UIImage]()
     
@@ -78,10 +50,6 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
     }
     
     
-    var isSigleImage = false
-    
-    
-    
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -95,11 +63,11 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImagePickerCell", for: indexPath) as! ImagePickerCell
-        
+
         if let asset = assetsFetchResults?[indexPath.row] {
             
-            
-            
+  
+        
             PHImageManager.default().requestImage(for: asset, targetSize: CGSize(width: 300, height: 300), contentMode: .default, options: nil) {
                 (result, info) in
                 if result != nil{
@@ -111,14 +79,14 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         
         cell.numberBut.layer.cornerRadius = 10
-        
+
         cell.indexPath = indexPath
         
         if isCellSellected[indexPath.row] {
             
             cell.isImageSeleted = true
             cell.selectedmask.isHidden = false
-            
+        
             if isMultiChooseAble {
                 
                 if selectedNumber[indexPath.row] == 0{
@@ -138,7 +106,7 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 cell.numberBut.isHidden = true
             }
         }
-        
+
         return cell
     }
     
@@ -156,14 +124,10 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
         multiChooseBut.layer.cornerRadius = multiChooseBut.frame.width/2
         multiChooseBut.backgroundColor = UIColor.fromDisplayP3(red: 0, green: 0, blue: 0, alpha: 0.65)
         
-        if self.isSigleImage {
-            multiChooseBut.isHidden = true
-        }
-        
         // Do any additional setup after loading the view.
         
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -205,18 +169,18 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
         }
         
     }
-    
+
     
     
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+    }
+    */
     
     @IBAction func multiChoose(_ sender: UIButton) {
         
@@ -251,19 +215,20 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 
             }
             
-            sender.backgroundColor = UIColor.fromDisplayP3(red: 84, green: 146, blue: 234, alpha: 0.8)
+            sender.backgroundColor = UIColor.yellow
+            
             
         }
-        //        collectionView.reloadData()
+//        collectionView.reloadData()
     }
     
     
     
     func initCollectionView() {
-        
+
         let assetOptions = PHFetchOptions()
         assetOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        
+
         assetsFetchResults = PHAsset.fetchAssets(with: assetOptions)
         
         if let n = assetsFetchResults?.count {
@@ -277,10 +242,12 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     
     @IBAction func cancelBtClk(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
     
-    
+
     
     override var prefersStatusBarHidden: Bool{
         return true
@@ -289,14 +256,16 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
     
     @IBAction func nextStep(_ sender: UIBarButtonItem) {
         
+        let ovc = self.inputVC as! NewScene
+        ovc.images = self.selectedImages
+        ovc.images?.append(UIImage(named: "addImageInco")!)
         
+        self.dismiss(animated: true, completion: nil)
+
         
     }
     
-    
-    
-    
-    
+
     
     func selectCell(cell: ImagePickerCell) {
         
@@ -315,21 +284,10 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
             if isMultiChooseAble{
                 scell.setNumber(newValue: selectedCells.count+1)
             }
+  
             
-            
-            
-            if let asset = assetsFetchResults?[(cell.indexPath?.row)!] {
-                
-                PHImageManager.default().requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: .default, options: nil) {
-                    (result, info) in
-                    
-                    if result != nil{
-                        self.selectedCells.append(scell)
-                        self.selectedImages.append(result!)
-                    }
-                    
-                }
-            }
+            self.selectedCells.append(scell)
+            self.selectedImages.append(cell.imageView.image!)
             
             isCellSellected[(cell.indexPath?.row)!] = true
             
@@ -341,14 +299,14 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
             }
             
             print(log: "select "+String(describing: cell.indexPath))
-            
+        
             getlargeImage(cell: cell)
             
             print(log: "selectedImages:\(selectedImages.count)   selectedCells:\(selectedCells.count)")
         }
         
-        
-        
+
+    
     }
     
     
@@ -368,9 +326,9 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 selectedCells.removeAll()
                 selectedImages.removeAll()
                 
-                return
+                return 
             }
-            
+
             number = selectedCells[cell.numbersOfSelected!-1].number
             
             selectedCells.remove(at: cell.numbersOfSelected!-1)
@@ -404,7 +362,7 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
             selectedImages.removeAll()
         }
         
-        
+
         
         selectedNumber[(cell.indexPath?.row)!] = 0
         
@@ -412,6 +370,8 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
         
         
     }
+    
+    
     
     
     
@@ -429,10 +389,10 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
                 if result != nil{
                     self.largeImageView.image = result!
                 }
-                
+
             }
             
-            
+
         }
         else{
             print(log: "未能成功读取到原图")
@@ -470,7 +430,7 @@ class ImagePicker: UIViewController, UICollectionViewDelegate, UICollectionViewD
         }
     }
     
-    
+
     
 }
 
@@ -483,9 +443,7 @@ class ImagePickerCell: UICollectionViewCell {
     @IBOutlet weak var selectedmask: UIButton!
     @IBOutlet weak var numberBut: UIButton!
     
-    
     var indexPath:IndexPath?
-    
     
     private var prisImageSelected = false
     private var prnumbersInSelected:Int? = nil
@@ -506,9 +464,6 @@ class ImagePickerCell: UICollectionViewCell {
         }
     }
     
-    
-    
-    
     var numbersOfSelected:Int?{
         get{
             return prnumbersInSelected
@@ -521,11 +476,25 @@ class ImagePickerCell: UICollectionViewCell {
             else{
                 numberBut.setTitle(String(describing: prnumbersInSelected!), for: .normal)
             }
-            
+
         }
     }
     
-    
+
     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

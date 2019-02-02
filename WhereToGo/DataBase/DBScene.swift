@@ -99,7 +99,8 @@ extension DataBase{
     /// 返回所有在DataBase中存储的场景
     ///
     /// - Returns: 所有的场景
-    class func getAllSceneInDB() -> [Scene] {
+    class func
+        getAllSceneInDB() -> [Scene]? {
         
         var scenes = [Scene]()
         
@@ -139,6 +140,7 @@ extension DataBase{
             
         } catch {
             print("一个场景都没有")
+            return nil
         }
         
         

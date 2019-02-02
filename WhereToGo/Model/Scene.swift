@@ -71,9 +71,13 @@ class Scene: NSObject {
 
 extension Scene{
     
+    
+    
     func saveToDB() -> Bool {
         return  DataBase.createNewScene(scene: self)
     }
+    
+    
     
     
     class func getScene(withSceneId: String) -> Scene {
@@ -82,12 +86,25 @@ extension Scene{
     }
     
     
+    
+    
     func addComment(user: User,text: String) -> Bool {
         
         let comment = Comment(owner: user, text: text)
         comment.scene = self
         
         return true
+    }
+    
+    
+    
+    class func getAllScene() -> [Scene]? {
+        
+        var scenes : [Scene]?
+        
+        scenes = DataBase.getAllSceneInDB()
+        
+        return scenes
     }
     
     
